@@ -1,20 +1,18 @@
 // 秒杀场次时间列表组
 <template>
     <swiper :options="swiperOption">
-        <swiperSlide class="time_item" :class="item.state?'active':''" v-for="item in time_list" :key="item.id">
+        <swiper-slide class="time_item" :class="item.state?'active':''" v-for="item in time_list" :key="item.id">
             <p class="time_value">{{item.time}}</p>
             <p class="state">{{item.state?'秒杀中':'即将开场'}}</p>
-        </swiperSlide>
+        </swiper-slide>
     </swiper>
 </template>
 <script>
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
 export default {
     props:['time_list'],
     components: {
-        swiper,
-        swiperSlide
+        // swiper,
+        // swiperSlide
     },
     data:function(){
         return{

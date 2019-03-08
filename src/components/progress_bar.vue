@@ -20,7 +20,7 @@ export default {
         big:(e)=>new Big(e)
     },
     mounted:function(){
-        console.log(new Big(this.$refs.bar.offsetWidth).times(this.num))
+        //console.log(new Big(this.$refs.bar.offsetWidth).times(this.num))
         this.speed_width=new Big(this.$refs.bar.offsetWidth).times(this.num).toString()
     },
     computed:{

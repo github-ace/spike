@@ -14,10 +14,9 @@ export default {
         }
     },
     render(){
-        console.log(this.$slots)
         return(
         <div class="list_item">
-            <img class="img" src={this.item_data.name} alt={this.item_data.name}/>
+            <img class="img" src='https://qyxiyu.quanquankeji.cn/page/imgs/discount/a.png' alt={this.item_data.name}/>
             <div class="content">
                 <p class="name">{this.item_data.name}</p>
                 <button class={`opreate ${!this.item_data.state?'no':'do'}`} onClick={!this.item_data.state?(f)=>f:()=>this.miaosha(this.item_data.id)}>{this.$slots.default[0].text}</button>

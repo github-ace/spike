@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import index from '@/views/index.vue';
 import NotFound from '@/views/not_found.vue';
+import detail from '@/views/detail.vue';
 
 Vue.use(Router);
 
@@ -24,18 +25,25 @@ const router = new Router({
     // },
     {
       path: '/',
-      component: index,
-      meta: {
+        component: index,
+        meta: {
           title: '活动',
-        },
-      children: [{
-          path: '/index.:jw?',
-          component: index,
+          keepAlive: true,
+            },
+      }, {
+        path: '/detail/:id?',
+          component: detail,
+          meta: {
+              title: '商品详情',
+            },
+      }, {
+        path: '/index.:jw?',
+          component: detail,
           meta: {
               title: '活动',
             },
-      }],
-  }, {
+      },
+   {
       path: '*',
       component: NotFound,
   },

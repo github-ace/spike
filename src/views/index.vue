@@ -1,7 +1,7 @@
 //主页面
 <template>
-    <div>
-        <Header style="position:fixed; z-index:10; width:100%" :itemArray="['秒杀','团购','抢购']" :index="index" :switch_tab="switch_tab"/>
+    <div class="all">
+        <Header style="position:fixed; top:0; z-index:10; width:100%; max-width:600px" :itemArray="['秒杀','团购','抢购']" :index="index" :switch_tab="switch_tab"/>
         
         <div v-if="index==0">
             <timeList :time_list="time_list"/>
@@ -30,7 +30,7 @@ export default {
     data:function(){
         return{
             time:'2019-03-06 15:00:00',
-            index:1,
+            index:localStorage.miaosha_index?localStorage.miaosha_index:0,
             time_list:[
                 {
                 time:'14:00',
@@ -125,18 +125,53 @@ export default {
                 num:'160',
                 state:1,
                 start_time:'12:00'
+            },{
+                img:'',
+                name:'名字名字名字名字名字名字名字名字名字',
+                value:'3999',
+                prev_value:'3999',
+                num:'160',
+                state:1,
+                start_time:'12:00'
+            },{
+                img:'',
+                name:'名字名字名字名字名字名字名字名字名字',
+                value:'3999',
+                prev_value:'3999',
+                num:'160',
+                state:1,
+                start_time:'12:00'
+            },{
+                img:'',
+                name:'名字名字名字名字名字名字名字名字名字',
+                value:'3999',
+                prev_value:'3999',
+                num:'160',
+                state:1,
+                start_time:'12:00'
+            },{
+                img:'',
+                name:'名字名字名字名字名字名字名字名字名字',
+                value:'3999',
+                prev_value:'3999',
+                num:'160',
+                state:1,
+                start_time:'12:00'
             }]
         }
     },
     methods:{
         switch_tab:function(e){
             if(e==this.index) return
-            this.index=e
+            this.index=localStorage.miaosha_index=e
         }
     }
 };
 </script>
 <style scoped>
+.all{
+    padding-top: 85px
+}
     .custom_CountDown{ 
         margin-bottom: 10px;
         padding: 0 28px
