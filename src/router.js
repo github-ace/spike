@@ -28,7 +28,6 @@ const router = new Router({
         component: index,
         meta: {
           title: '活动',
-          keepAlive: true,
             },
       }, {
         path: '/detail/:id?',
@@ -38,7 +37,7 @@ const router = new Router({
             },
       }, {
         path: '/index.:jw?',
-          component: detail,
+          component: index,
           meta: {
               title: '活动',
             },

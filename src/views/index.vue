@@ -1,23 +1,30 @@
 //主页面
 <template>
     <div class="all">
-        <Header style="position:fixed; top:0; z-index:10; width:100%; max-width:600px" :itemArray="['秒杀','团购','抢购']" :index="index" :switch_tab="switch_tab"/>
+        <Header class="top_tab" style="position:fixed; top:0; z-index:10; width:100%; max-width:600px" :itemArray="['秒杀','团购','抢购']" :index="index" :switch_tab="switch_tab"/>
         
         <div v-if="index==0">
+            <scrollList markId="0">
             <timeList :time_list="time_list"/>
-            <CountDown class="custom_CountDown" :time="time"/>
+            <CountDown class="custom_CountDown" title="距离秒杀结束还剩：" :time="time"/>
             <listItem class="list_juli" v-for="(item,index) in miaosha_list" :key="index" :item_data="item" >{{item.state?'马上秒杀':'已抢完'}}</listItem>
+            </scrollList>
         </div>
         <div v-else-if="index==1">
+            <scrollList markId="1">
             <TglistItem class="list_juli tuangou" v-for="(item,index) in tuangou_list" :key="index" :item_data="item"/>
+            </scrollList>
         </div>
         <div v-else-if="index==2">
+            <scrollList markId="2">
             <listItem class="list_juli" v-for="(item,index) in qianggou_list" :key="index" :item_data="item">{{item.state?'立即抢购':'已抢完'}}</listItem>
+            </scrollList>
         </div>
     </div>
 </template>
 
 <script>
+import scrollList from '@/components/scroll_list.vue'
 import listItem from "@/components/list_item.vue"
 import TglistItem from "@/components/tg_list_item.vue"
 import CountDown from "@/components/djs_tip.vue"
@@ -26,7 +33,7 @@ import timeList from "@/components/time_list"
 import axios from 'axios'
 
 export default {
-    components:{listItem,TglistItem,CountDown,Header,timeList},
+    components:{scrollList,listItem,TglistItem,CountDown,Header,timeList},
     data:function(){
         return{
             time:'2019-03-06 15:00:00',
@@ -165,16 +172,21 @@ export default {
             if(e==this.index) return
             this.index=localStorage.miaosha_index=e
         }
+    },
+    mounted:function(){
     }
 };
 </script>
 <style scoped>
-.all{
-    padding-top: 85px
-}
+    .all{
+        padding-top: 85px
+    }
     .custom_CountDown{ 
+        height: 82px;
         margin-bottom: 10px;
-        padding: 0 28px
+        padding: 0 28px;
+        border-top:1px solid #dbdbdb;
+        border-bottom:1px solid #dbdbdb;
     }
     .list_juli{
         margin-bottom: 22px

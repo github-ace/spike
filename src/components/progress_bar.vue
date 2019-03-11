@@ -40,7 +40,7 @@ export default {
         flex-grow: 1;
         height: 15px; 
         border:1px solid #999; 
-        background:url(../assets/img/progress_bar_bg.png) repeat-x left center/ auto 100%;
+        background:url(../assets/img/progress_bar_bg.png) repeat-x left center/ 75% 100%;
         animation: duration 5s linear infinite
     }
     .speed{ position: relative; height: 100%; background: #8c7049}

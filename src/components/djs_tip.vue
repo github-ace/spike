@@ -1,7 +1,7 @@
 // 倒计时提示
 <template>
     <div class="djs_area">
-        <p class="djs_area_title">距离秒杀结束还剩：</p>
+        <p class="djs_area_title">{{title}}</p>
         <div class="time_view">
             <span>{{hour<10?'0'+hour:hour}}</span>时<span>{{min<10?'0'+min:min}}</span>分<span>{{second<10?'0'+second:second}}</span>秒
         </div>
@@ -12,7 +12,7 @@ import moment from 'moment'
 import { setInterval } from 'timers';
 export default {
     name:'djs_tip',
-    props:['time'],
+    props:['time','title'],
     data:function(){
         return{
             hour:'--',
@@ -30,13 +30,14 @@ export default {
     computed:{
     },
     mounted:function(){
+        //console.log(moment.duration(moment(this.time)-moment(),'ms'))
         this.timer=window.setInterval(()=>{
             if(moment(this.time)<moment()){
                 this.clearTime()
                 return
             }
             
-            this.hour=moment.duration(moment(this.time)-moment(),'ms').get('hours')
+            this.hour=moment.duration(moment(this.time)-moment(),'ms').get('hours')+moment.duration(moment(this.time)-moment(),'ms').get('days')*24
         
             this.min= moment.duration(moment(this.time)-moment(),'ms').get('minutes')
         
@@ -51,14 +52,11 @@ export default {
 </script>
 <style scoped>
 .djs_area{
-    height: 82px;
     font-size: 27px;
     color: #a92222;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top:1px solid #dbdbdb;
-    border-bottom:1px solid #dbdbdb;
     background: #fff
 }
 .djs_area_title{
