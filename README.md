@@ -1,4 +1,6 @@
-# bfc_spike
+# spike
+
+使用vue实现的程序
 
 ## Project setup
 ```
