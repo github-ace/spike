@@ -1,6 +1,6 @@
 # spike
 
-使用vue实现的程序
+使用vue实现的程序，即将使用react完成一遍
 
 ## Project setup
 ```
