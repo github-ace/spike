@@ -17,9 +17,8 @@ export default {
     },
     methods:{
         begin_scroll:function(e){
-            console.log(e.target.clientHeight,e.target.scrollHeight,e.target.scrollTop)
-            window.sessionStorage[encodeURIComponent(location.href)+this.markId]=e.target.scrollTop
-            if(e.target.clientHeight+e.target.scrollTop==e.target.scrollHeight){
+            window.sessionStorage[encodeURIComponent(location.href)+this.markId]=window.scrollY
+            if(window.scrollY+window.innerHeight==document.body.scrollHeight){
                 console.log('loading……')
             }
         }
@@ -28,15 +27,10 @@ export default {
         document.documentElement.scrollTop=document.body.scrollTop=window.sessionStorage[encodeURIComponent(location.href)+this.markId]
     },
     mounted:function(){
-        document.addEventListener('scroll',(e)=>{
-            window.sessionStorage[encodeURIComponent(location.href)+this.markId]=window.scrollY
-            if(window.scrollY+window.innerHeight==document.body.scrollHeight){
-                console.log('loading……')
-            }
-        })
+        document.addEventListener('scroll',this.begin_scroll)
     },
     beforeDestroy:function(){
-        document.removeEventListener('scroll')
+        document.removeEventListener('scroll',this.begin_scroll)
     }
 }
 </script>
